@@ -9,13 +9,14 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useToast } from "@/hooks/use-toast"
 import { CreditCard, Wallet } from 'lucide-react'
 
-export function PaymentForm({ amount }) {
+export function PaymentForm({ amount = 100 }) {
   const [paymentMethod, setPaymentMethod] = useState('razorpay')
   const [cardNumber, setCardNumber] = useState('')
   const [cardExpiry, setCardExpiry] = useState('')
   const [cardCVV, setCardCVV] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+  const { toast } = useToast()
 
   const handlePayment = async (e) => {
     e.preventDefault()
